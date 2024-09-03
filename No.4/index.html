@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Selector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #333;
+        }
+
+        .image-selector {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        .controls label {
+            font-weight: bold;
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image-option {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 4px solid transparent;
+            border-radius: 10px;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .image-option:hover {
+            border: 4px solid #ff7f50;
+            transform: scale(1.1);
+        }
+
+        .displayed-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .displayed-images img {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-selector">
+        <div class="controls">
+            <label for="imageSelection">Select Image:</label>
+            <select id="imageSelection" onchange="changeOpacity()">
+                <option value="image1">Beach</option>
+                <option value="image2">City</option>
+                <option value="image3">Mountain</option>
+            </select>
+            <label for="opacity"> Select Opacity:</label>
+            <select id="opacity" onchange="changeOpacity()">
+                <option value="1">100%</option>
+                <option value="0.5">50%</option>
+                <option value="0.2">20%</option>
+            </select>
+        </div>
+        <div class="displayed-images">
+            <img id="image1" src="asset/beach.png" onclick="selectImage('image1')" class="image-option">
+            <img id="image2" src="asset/city.png" onclick="selectImage('image2')" class="image-option">
+            <img id="image3" src="asset/mountain.png" onclick="selectImage('image3')" class="image-option">
+        </div>
+    </div>
+
+    <script>
+        const imageOpacity = {
+            image1: 1,
+            image2: 1,
+            image3: 1
+        };
+
+        function changeOpacity() {
+            const selectedImage = document.getElementById('imageSelection').value;
+            const opacityValue = document.getElementById('opacity').value;
+            document.getElementById(selectedImage).style.opacity = opacityValue;
+            imageOpacity[selectedImage] = opacityValue;
+        }
+
+        function selectImage(imageId) {
+            document.getElementById('imageSelection').value = imageId;
+            document.getElementById('opacity').value = imageOpacity[imageId];
+        }
+    </script>
+</body>
+</html>

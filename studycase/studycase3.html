@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+    <div>
+        <label for="">Opsi Jawaban & Poin</label>
+    </div>
+    <br>
+    <div>
+        <label for="opsi" id="label_opsi">Opsi 1 :</label>
+        <br>
+        <input type="text" name="" id="poin" placeholder="Poin">
+        <input type="text" name="" id="despoin" placeholder="Deskripsi poin">
+    </div>
+    <br>
+    <div id="opsi_baru"></div>
+</form>
+<div>
+    <button onclick="opsi()">tambah opsi</button>
+</div>
+
+<script>
+    let opsi_baru = document.getElementById('opsi_baru');
+    let angka = 2;
+
+    function opsi(){
+        opsi_baru.innerHTML +=`
+            <div>
+        <label for="opsi" id="label_opsi">Opsi ${angka++} :</label>
+        <br>
+        <input type="text" name="" id="poin" placeholder="Poin">
+        <input type="text" name="" id="despoin" placeholder="Deskripsi poin">
+        </div> <br>`
+    }  
+
+</script>
+
+</body>
+</html>

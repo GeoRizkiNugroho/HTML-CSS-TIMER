@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f7f7f7, #e0e0e0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            font-size: 16px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        #output {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .highlight {
+            color: #FF5722;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" placeholder="Ketik sesuatu..."> 
+        <input type="submit" value="Cari" onclick="checkInput()">
+        
+        <p id="output"></p>
+    </div>
+
+    <script>
+        function checkInput() {
+            var input = document.querySelector('input[type="text"]').value;
+            var output = document.getElementById('output');
+            
+            if (input == "") {
+                output.innerHTML = "Tidak mencari data...";
+            } else {
+                output.innerHTML = 'Mencari data: <span class="highlight">' + input + '</span>' + "...";
+            }
+        }
+    </script>
+</body>
+</html>
